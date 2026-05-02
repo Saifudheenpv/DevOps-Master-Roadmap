@@ -6,6 +6,7 @@
 🔹 Lab Instruction
 
 👉 Work on: devops-control (main machine)
+
 👉 Later we will involve app-node and monitor-node
 
 ##
@@ -152,27 +153,27 @@ Managed by kernel scheduler
 
     PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                               
     988 devops    20   0   15124   7136   5140 S   0.7   0.2   0:00.56 sshd                                  
-   1341 root      20   0       0      0      0 I   0.3   0.0   0:01.70 kworker/1:3-events                    
-      1 root      20   0   22032  13316   9572 S   0.0   0.3   0:02.19 systemd                               
-      2 root      20   0       0      0      0 S   0.0   0.0   0:00.01 kthreadd                              
-      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_workqueue_release                
-      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-rcu_g                       
-      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-rcu_p                       
-      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-slub_                       
-      7 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-netns                       
-      9 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri           
-     11 root      20   0       0      0      0 I   0.0   0.0   0:00.00 kworker/u4:0-ipv6_addrconf            
-     12 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-mm_pe                       
-     13 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_kthread                     
-     14 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_rude_kthread                
-     15 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_trace_kthread               
-     16 root      20   0       0      0      0 S   0.0   0.0   0:00.02 ksoftirqd/0                           
-     17 root      20   0       0      0      0 I   0.0   0.0   0:00.15 rcu_preempt                           
-     18 root      rt   0       0      0      0 S   0.0   0.0   0:00.03 migration/0                           
-     19 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/0                         
-     20 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0                               
-     21 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/1                               
-     22 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/1  
+    1341 root      20   0       0      0      0 I   0.3   0.0   0:01.70 kworker/1:3-events                    
+    1 root      20   0   22032  13316   9572 S   0.0   0.3   0:02.19 systemd                               
+    2 root      20   0       0      0      0 S   0.0   0.0   0:00.01 kthreadd                              
+    3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_workqueue_release                
+    4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-rcu_g                       
+    5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-rcu_p                       
+    6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-slub_                       
+    7 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-netns                       
+    9 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri           
+    11 root      20   0       0      0      0 I   0.0   0.0   0:00.00 kworker/u4:0-ipv6_addrconf            
+    12 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/R-mm_pe                       
+    13 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_kthread                     
+    14 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_rude_kthread                
+    15 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_trace_kthread               
+    16 root      20   0       0      0      0 S   0.0   0.0   0:00.02 ksoftirqd/0                           
+    17 root      20   0       0      0      0 I   0.0   0.0   0:00.15 rcu_preempt                           
+    18 root      rt   0       0      0      0 S   0.0   0.0   0:00.03 migration/0                           
+    19 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/0                         
+    20 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0                               
+    21 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/1                               
+    22 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/1  
 
 ##
 🧠 Understanding
@@ -195,6 +196,7 @@ Kernel scheduling in action
 ##
     id
 
+##
     devops@devops-control:~$ id
     uid=1000(devops) gid=1000(devops) groups=1000(devops),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),101(lxd)
 
@@ -210,6 +212,7 @@ Not root → limited privileges
 
     cd /root
 
+##
     devops@devops-control:~$ cd /root
     -bash: cd: /root: Permission denied
 
@@ -230,6 +233,7 @@ Kernel blocks access
 
     sudo ls /root
 
+##
     devops@devops-control:~$ sudo ls /root
 
 ##
@@ -244,6 +248,7 @@ Kernel now allows access
 
     strace ls
 
+##
     devops@devops-control:~$ strace ls
     execve("/usr/bin/ls", ["ls"], 0x7ffef3f628b0 /* 22 vars */) = 0
     brk(NULL)                               = 0x5d15f2b1f000
@@ -279,6 +284,7 @@ write()
 
     uptime
 
+##
     devops@devops-control:~$ uptime 
     09:59:07 up  3:04,  1 user,  load average: 0.00, 0.00, 0.00
 
@@ -331,6 +337,7 @@ Kernel workload insight
 
     ssh app-node
 
+##
     devops@devops-control:~$ ssh app
     Welcome to Ubuntu 24.04.4 LTS (GNU/Linux 6.8.0-111-generic x86_64)
 
@@ -342,6 +349,7 @@ Kernel workload insight
 ##
     ssh monitor-node
 
+##
     devops@devops-control:~$ ssh monitor 
     Welcome to Ubuntu 24.04.4 LTS (GNU/Linux 6.8.0-111-generic x86_64)
 
