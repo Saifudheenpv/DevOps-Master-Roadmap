@@ -59,12 +59,14 @@ What happens internally:
     6. You see result 
 
 👉 OS is always in the middle
+
 🎯 Core Responsibilities of OS
+
 1. Process Management
 
-    • Runs programs (called processes) 
+        • Runs programs (called processes) 
 
-    • Handles multiple tasks at once 
+        • Handles multiple tasks at once 
 
 2. Memory Management
 
