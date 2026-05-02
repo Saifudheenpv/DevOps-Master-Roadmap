@@ -2,11 +2,13 @@
 
 🧠 PART 1 — OPERATING SYSTEM BASICS (FULL THEORY — CLEAN NOTES)
 
+##
 🔹 Lab Instruction for This Part
 
 👉 Work on: devops-control (your main machine)
 
 👉 No commands needed now — only understanding
+##
 
 🔹 1. What is an Operating System (OS)?
 
