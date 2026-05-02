@@ -40,9 +40,9 @@ The OS acts as:
 🔄 Real Flow (Important)
 
 When you run a command:
----
+
     ls
----
+
 
 What happens internally:
 
