@@ -107,7 +107,7 @@ What happens internally:
 ##
 🧠 Real-Life Analogy
 
-      Component	      Role
+Component	      Role
 
     • Hardware	      Workers
 
@@ -176,13 +176,13 @@ Examples:
 
       Feature	          Kernel Space    	                User Space
 
-    • Access          Full hardware access	            Limited
+    • Access              Full hardware access	            Limited
 
-    • Risk	          Dangerous (can crash system)	    Safe
+    • Risk	              Dangerous (can crash system)	    Safe
 
-    • Runs	          Core OS	                        Applications
+    • Runs	              Core OS	                        Applications
 
-    • Control	      Direct	                        Indirect
+    • Control	          Direct	                        Indirect
 
 ##
 🔄 How They Work Together
@@ -400,4 +400,3 @@ After this:
     • Linux = kernel only 
 
     • Ubuntu = Linux + tools
-##
