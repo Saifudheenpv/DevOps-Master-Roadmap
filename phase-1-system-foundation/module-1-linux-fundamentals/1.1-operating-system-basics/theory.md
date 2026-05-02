@@ -1,6 +1,7 @@
 📘 PHASE 1 — MODULE 1.1
 
 🧠 PART 1 — OPERATING SYSTEM BASICS (FULL THEORY — CLEAN NOTES)
+
 ##
 🔹 Lab Instruction for This Part
 
@@ -9,6 +10,7 @@
 👉 No commands needed now — only understanding
 ##
 
+##
 🔹 1. What is an Operating System (OS)?
 
 📌 Simple Definition
@@ -20,8 +22,9 @@ An Operating System (OS) is a software that:
     • Runs programs 
     
     • Connects user and machine 
+##
 
-
+##
 🧠 Deep Understanding
 
 A computer has only hardware:
@@ -37,7 +40,9 @@ A computer has only hardware:
 The OS acts as:
 
 ➡️ Controller + Manager + Interface
+##
 
+##
 🔄 Real Flow (Important)
 
 When you run a command:
@@ -60,7 +65,9 @@ What happens internally:
     6. You see result 
 
 👉 OS is always in the middle
+##
 
+##
 🎯 Core Responsibilities of OS
 
 1. Process Management
@@ -68,19 +75,25 @@ What happens internally:
         • Runs programs (called processes) 
 
         • Handles multiple tasks at once 
+##
 
+##
 2. Memory Management
 
         • Allocates RAM 
 
         • Prevents apps from interfering 
+##
 
+##
 3. File System Management
 
         • Stores files 
 
         • Organizes directories 
+##
 
+##
 4. Device Management
 
     • Controls: 
@@ -90,31 +103,40 @@ What happens internally:
         ◦ Disk 
 
         ◦ Network 
+##
 
+##
 5. Security & Permissions
 
         • Controls access 
 
         • Protects system 
+##
 
+##
 🧠 Real-Life Analogy
 
-    • Component	Role
+    Component	      Role
+##
 
-    • Hardware	Workers
+    • Hardware	      Workers
 
-    • User	Boss
+    • User	          Boss
 
-    • OS	Manager
+    • OS	          Manager
 
 👉 Without OS → system chaos
 
 👉 With OS → structured system
+##
 
+##
 🔹 2. Kernel vs User Space (VERY IMPORTANT)
 
 This is core DevOps concept — understand deeply.
+##
 
+##
 🧠 What is Kernel?
 
 📌 Definition
@@ -128,7 +150,9 @@ Kernel is the core part of OS
     • Memory 
 
     • Devices 
+##
 
+##
 🔥 Responsibilities of Kernel
 
     • Process scheduling 
@@ -140,7 +164,9 @@ Kernel is the core part of OS
     • System calls handling 
 
 👉 Kernel = low-level control layer
+##
 
+##
 🧠 What is User Space?
 
 User space is where:
@@ -158,25 +184,32 @@ Examples:
     • Nginx 
 
     • Applications 
+##
 
+##
 ⚖️ Kernel vs User Space
 
-    • Feature	Kernel Space	User Space
+    Feature	          Kernel Space    	                User Space
+##
 
-    • Access	Full hardware access	Limited
+    • Access          Full hardware access	            Limited
 
-    • Risk	Dangerous (can crash system)	Safe
+    • Risk	          Dangerous (can crash system)	    Safe
 
-    • Runs	Core OS	Applications
+    • Runs	          Core OS	                        Applications
 
-    • Control	Direct	Indirect
+    • Control	      Direct	                        Indirect
+##
 
+##
 🔄 How They Work Together
 
 Flow:
 
     User → Application → Kernel → Hardware → Kernel → Application → User
+##
 
+##
 🧩 Example
 
 Command:
@@ -195,7 +228,9 @@ Flow:
     4. Returns data 
 
     5. Output shown 
+##
 
+##
 🔐 System Calls (VERY IMPORTANT)
 
 Applications cannot directly access hardware.
@@ -213,7 +248,9 @@ Examples:
     • write() 
 
 👉 These are controlled entry points to kernel
+##
 
+##
 ⚠️ Why Separation Exists?
 
 If no separation:
@@ -225,9 +262,13 @@ If no separation:
     • Data corruption 
 
 👉 Kernel protects system stability
+##
 
+##
 🔹 3. Types of Operating Systems
+##
 
+##
 🪟 1. Desktop OS
 
 Used for personal systems
@@ -239,7 +280,9 @@ Examples:
     • macOS 
 
 👉 GUI-based systems
+##
 
+##
 🐧 2. Linux-Based OS
 
 Examples:
@@ -257,7 +300,9 @@ Examples:
     • Cloud 
 
     • DevOps 
+##
 
+##
 🏢 3. Server OS
 
 Optimized for:
@@ -273,7 +318,9 @@ Examples:
     • Linux servers 
 
     • Windows Server 
+##
 
+##
 📱 4. Mobile OS
 
 Examples:
@@ -281,7 +328,9 @@ Examples:
     • Android 
 
     • iOS 
+##
 
+##
 🧠 Key Insight
 
 👉 Linux dominates:
@@ -291,15 +340,21 @@ Examples:
     • Cloud 
 
     • DevOps 
+##
 
+##
 🔹 4. What Linux Actually Is (CRITICAL UNDERSTANDING)
+##
 
+##
 ❌ Wrong Thinking
 
 “Linux = Ubuntu”
 
     • 👉 Incorrect
+##
 
+##
 ✅ Correct Understanding
 
 🧠 Linux = Kernel
@@ -311,13 +366,17 @@ Linux is:
 Created by:
 
     • 👉 Linus Torvalds
+##
 
+##
 📦 What is Ubuntu?
 
 Ubuntu is:
 
     • 👉 Linux Kernel + tools + software
+##
 
+##
 🧱 Full Linux System =
 
     • Kernel (Linux) 
@@ -333,7 +392,9 @@ Ubuntu is:
 👉 This full package is called:
 
 ➡️ Distribution (Distro)
+##
 
+##
 📌 Examples of Distros
 
     • Ubuntu 
@@ -343,10 +404,13 @@ Ubuntu is:
     • Fedora 
 
     • Arch Linux 
+##
 
+##
 🚗 Real Analogy
 
-    • Component	Example
+    Component	Example
+##
 
     • Kernel	Engine
 
@@ -355,7 +419,9 @@ Ubuntu is:
 👉 Kernel alone ≠ usable system
 
 👉 Distro = complete OS
+##
 
+##
 🧠 FINAL UNDERSTANDING (MUST BE CLEAR)
 
 After this:
@@ -369,3 +435,4 @@ After this:
     • Linux = kernel only 
 
     • Ubuntu = Linux + tools
+##
