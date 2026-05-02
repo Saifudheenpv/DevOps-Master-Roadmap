@@ -8,7 +8,6 @@
 👉 Work on: devops-control (your main machine)
 
 👉 No commands needed now — only understanding
-##
 
 ##
 🔹 1. What is an Operating System (OS)?
@@ -22,7 +21,6 @@ An Operating System (OS) is a software that:
     • Runs programs 
     
     • Connects user and machine 
-##
 
 ##
 🧠 Deep Understanding
@@ -40,7 +38,6 @@ A computer has only hardware:
 The OS acts as:
 
 ➡️ Controller + Manager + Interface
-##
 
 ##
 🔄 Real Flow (Important)
@@ -65,7 +62,6 @@ What happens internally:
     6. You see result 
 
 👉 OS is always in the middle
-##
 
 ##
 🎯 Core Responsibilities of OS
@@ -75,7 +71,6 @@ What happens internally:
         • Runs programs (called processes) 
 
         • Handles multiple tasks at once 
-##
 
 ##
 2. Memory Management
@@ -83,7 +78,6 @@ What happens internally:
         • Allocates RAM 
 
         • Prevents apps from interfering 
-##
 
 ##
 3. File System Management
@@ -91,7 +85,6 @@ What happens internally:
         • Stores files 
 
         • Organizes directories 
-##
 
 ##
 4. Device Management
@@ -102,8 +95,7 @@ What happens internally:
 
         ◦ Disk 
 
-        ◦ Network 
-##
+        ◦ Network
 
 ##
 5. Security & Permissions
@@ -111,13 +103,11 @@ What happens internally:
         • Controls access 
 
         • Protects system 
-##
 
 ##
 🧠 Real-Life Analogy
 
-    Component	      Role
-##
+      Component	      Role
 
     • Hardware	      Workers
 
@@ -128,13 +118,11 @@ What happens internally:
 👉 Without OS → system chaos
 
 👉 With OS → structured system
-##
 
 ##
 🔹 2. Kernel vs User Space (VERY IMPORTANT)
 
 This is core DevOps concept — understand deeply.
-##
 
 ##
 🧠 What is Kernel?
@@ -150,7 +138,6 @@ Kernel is the core part of OS
     • Memory 
 
     • Devices 
-##
 
 ##
 🔥 Responsibilities of Kernel
@@ -164,7 +151,6 @@ Kernel is the core part of OS
     • System calls handling 
 
 👉 Kernel = low-level control layer
-##
 
 ##
 🧠 What is User Space?
@@ -184,13 +170,11 @@ Examples:
     • Nginx 
 
     • Applications 
-##
 
 ##
 ⚖️ Kernel vs User Space
 
-    Feature	          Kernel Space    	                User Space
-##
+      Feature	          Kernel Space    	                User Space
 
     • Access          Full hardware access	            Limited
 
@@ -199,7 +183,6 @@ Examples:
     • Runs	          Core OS	                        Applications
 
     • Control	      Direct	                        Indirect
-##
 
 ##
 🔄 How They Work Together
@@ -207,7 +190,6 @@ Examples:
 Flow:
 
     User → Application → Kernel → Hardware → Kernel → Application → User
-##
 
 ##
 🧩 Example
@@ -228,7 +210,6 @@ Flow:
     4. Returns data 
 
     5. Output shown 
-##
 
 ##
 🔐 System Calls (VERY IMPORTANT)
@@ -248,7 +229,6 @@ Examples:
     • write() 
 
 👉 These are controlled entry points to kernel
-##
 
 ##
 ⚠️ Why Separation Exists?
@@ -262,11 +242,9 @@ If no separation:
     • Data corruption 
 
 👉 Kernel protects system stability
-##
 
 ##
 🔹 3. Types of Operating Systems
-##
 
 ##
 🪟 1. Desktop OS
@@ -280,7 +258,6 @@ Examples:
     • macOS 
 
 👉 GUI-based systems
-##
 
 ##
 🐧 2. Linux-Based OS
@@ -300,7 +277,6 @@ Examples:
     • Cloud 
 
     • DevOps 
-##
 
 ##
 🏢 3. Server OS
@@ -318,7 +294,6 @@ Examples:
     • Linux servers 
 
     • Windows Server 
-##
 
 ##
 📱 4. Mobile OS
@@ -328,7 +303,6 @@ Examples:
     • Android 
 
     • iOS 
-##
 
 ##
 🧠 Key Insight
@@ -340,11 +314,9 @@ Examples:
     • Cloud 
 
     • DevOps 
-##
 
 ##
 🔹 4. What Linux Actually Is (CRITICAL UNDERSTANDING)
-##
 
 ##
 ❌ Wrong Thinking
@@ -352,7 +324,6 @@ Examples:
 “Linux = Ubuntu”
 
     • 👉 Incorrect
-##
 
 ##
 ✅ Correct Understanding
@@ -366,7 +337,6 @@ Linux is:
 Created by:
 
     • 👉 Linus Torvalds
-##
 
 ##
 📦 What is Ubuntu?
@@ -374,7 +344,6 @@ Created by:
 Ubuntu is:
 
     • 👉 Linux Kernel + tools + software
-##
 
 ##
 🧱 Full Linux System =
@@ -392,7 +361,6 @@ Ubuntu is:
 👉 This full package is called:
 
 ➡️ Distribution (Distro)
-##
 
 ##
 📌 Examples of Distros
@@ -404,22 +372,19 @@ Ubuntu is:
     • Fedora 
 
     • Arch Linux 
-##
 
 ##
 🚗 Real Analogy
 
-    Component	Example
-##
+      Component	 Example
 
-    • Kernel	Engine
+    • Kernel	 Engine
 
-    • Distro	Full Car
+    • Distro	 Full Car
 
 👉 Kernel alone ≠ usable system
 
 👉 Distro = complete OS
-##
 
 ##
 🧠 FINAL UNDERSTANDING (MUST BE CLEAR)
