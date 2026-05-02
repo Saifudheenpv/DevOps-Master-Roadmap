@@ -70,15 +70,15 @@ What happens internally:
 
 2. Memory Management
 
-    • Allocates RAM 
+        • Allocates RAM 
 
-    • Prevents apps from interfering 
+        • Prevents apps from interfering 
 
 3. File System Management
 
-    • Stores files 
+        • Stores files 
 
-    • Organizes directories 
+        • Organizes directories 
 
 4. Device Management
 
@@ -92,19 +92,19 @@ What happens internally:
 
 5. Security & Permissions
 
-    • Controls access 
+        • Controls access 
 
-    • Protects system 
+        • Protects system 
 
 🧠 Real-Life Analogy
 
-Component	Role
+    • Component	Role
 
-Hardware	Workers
+    • Hardware	Workers
 
-User	Boss
+    • User	Boss
 
-OS	Manager
+    • OS	Manager
 
 👉 Without OS → system chaos
 
@@ -160,28 +160,28 @@ Examples:
 
 ⚖️ Kernel vs User Space
 
-Feature	Kernel Space	User Space
+    • Feature	Kernel Space	User Space
 
-Access	Full hardware access	Limited
+    • Access	Full hardware access	Limited
 
-Risk	Dangerous (can crash system)	Safe
+    • Risk	Dangerous (can crash system)	Safe
 
-Runs	Core OS	Applications
+    • Runs	Core OS	Applications
 
-Control	Direct	Indirect
+    • Control	Direct	Indirect
 
 🔄 How They Work Together
 
 Flow:
 
-User → Application → Kernel → Hardware → Kernel → Application → User
+    User → Application → Kernel → Hardware → Kernel → Application → User
 
 🧩 Example
 
 Command:
----
+
     cat file.txt
----
+
 
 Flow:
 
@@ -297,7 +297,7 @@ Examples:
 
 “Linux = Ubuntu”
 
-👉 Incorrect
+    • 👉 Incorrect
 
 ✅ Correct Understanding
 
@@ -305,17 +305,17 @@ Examples:
 
 Linux is:
 
-👉 Only the kernel
+    • 👉 Only the kernel
 
 Created by:
 
-👉 Linus Torvalds
+    • 👉 Linus Torvalds
 
 📦 What is Ubuntu?
 
 Ubuntu is:
 
-👉 Linux Kernel + tools + software
+    • 👉 Linux Kernel + tools + software
 
 🧱 Full Linux System =
 
@@ -345,11 +345,11 @@ Ubuntu is:
 
 🚗 Real Analogy
 
-Component	Example
+    • Component	Example
 
-Kernel	Engine
+    • Kernel	Engine
 
-Distro	Full Car
+    • Distro	Full Car
 
 👉 Kernel alone ≠ usable system
 
