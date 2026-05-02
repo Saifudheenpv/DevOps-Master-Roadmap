@@ -107,7 +107,7 @@ What happens internally:
 ##
 🧠 Real-Life Analogy
 
-Component	      Role
+    Component	      Role
 
     • Hardware	      Workers
 
