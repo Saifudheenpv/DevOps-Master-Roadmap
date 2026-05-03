@@ -13,12 +13,11 @@
 #
 **🔹 What is Linux Architecture?**
 
-##
 **📌 Simple Definition**
 
 Linux architecture is:
 
-👉** How the Linux system is structured internally**
+👉**How the Linux system is structured internally**
 
 It shows:
 
@@ -31,16 +30,17 @@ It shows:
 Linux is divided into layers:
 
 ---
+
 User
- ↓
+↓
 Applications
- ↓
+↓
 Shell
- ↓
+↓
 System Libraries
- ↓
+↓
 Kernel
- ↓
+↓
 Hardware
 ---
 
