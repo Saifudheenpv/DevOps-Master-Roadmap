@@ -29,20 +29,19 @@ It shows:
 
 Linux is divided into layers:
 
----
-
+```
 User
-↓
+ ↓
 Applications
-↓
+ ↓
 Shell
-↓
+ ↓
 System Libraries
-↓
+ ↓
 Kernel
-↓
+ ↓
 Hardware
----
+```
 
 👉 Everything flows **top → down → top**
 
