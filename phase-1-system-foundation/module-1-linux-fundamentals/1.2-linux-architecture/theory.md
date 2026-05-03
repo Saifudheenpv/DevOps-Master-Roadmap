@@ -7,22 +7,30 @@
 **🔹 Lab Instruction for This Part**
 
 👉 **Work on: devops-control**
+
 👉 Only understanding — no commands now
 
-🔹 What is Linux Architecture?
-📌 Simple Definition
+#
+**🔹 What is Linux Architecture?**
+
+##
+**📌 Simple Definition**
 
 Linux architecture is:
-👉 How the Linux system is structured internally
+
+👉** How the Linux system is structured internally**
 
 It shows:
 
-How components are connected
-How data flows inside the system
-🧠 Big Picture (VERY IMPORTANT)
+- How components are connected
+- How data flows inside the system
+
+##
+**🧠 Big Picture (VERY IMPORTANT)**
 
 Linux is divided into layers:
 
+---
 User
  ↓
 Applications
@@ -34,8 +42,9 @@ System Libraries
 Kernel
  ↓
 Hardware
+---
 
-👉 Everything flows top → down → top
+👉 Everything flows **top → down → top**
 
 🔹 1. Kernel (CORE OF SYSTEM)
 🧠 What is Kernel?
