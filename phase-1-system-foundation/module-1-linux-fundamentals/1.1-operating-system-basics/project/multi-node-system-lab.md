@@ -499,23 +499,23 @@ User says:
 
 1. Check process:
 
-    ps aux
+     ps aux
 
 2. Check file:
 
-    ls -l app.log
+     ls -l app.log
 
 3. Check user:
 
-    whoami
+     whoami
 
 4. Fix:
 
-    chmod 644 app.log
+     chmod 644 app.log
 
 or restart:
 
-    sleep 500 &
+     sleep 500 &
 
 ##
 👉 This is real DevOps debugging mindset
