@@ -1,3 +1,4 @@
+#
 🚀 PHASE 1 — MODULE 1.1
 
 🧪 PART 3 — REAL PROJECT (MULTI-NODE + BREAK + FIX)
@@ -18,13 +19,13 @@ You will:
 ##
 🧠 Lab Usage Plan
 
-    Machine	           Role
+    Machine	            Role
     
-    devops-control	   Control + Debug
+    devops-control	    Control + Debug
     
-    app-node	       Application server
+    app-node	        Application server
     
-    monitor-node	   Monitoring / Observer
+    monitor-node	    Monitoring / Observer
 
 ##
 🔥 PROJECT NAME
@@ -36,8 +37,31 @@ You will:
 
 👉 Work on: devops-control
 
-ping -c 2 app-node
-ping -c 2 monitor-node
+    ping -c 2 app-node
+
+#
+    devops@devops-control:~$ ping -c 2 app
+    PING app (192.168.122.175) 56(84) bytes of data.
+    64 bytes from app (192.168.122.175): icmp_seq=1 ttl=64 time=0.799 ms
+    64 bytes from app (192.168.122.175): icmp_seq=2 ttl=64 time=0.573 ms
+
+    --- app ping statistics ---
+    2 packets transmitted, 2 received, 0% packet loss, time 1000ms
+    rtt min/avg/max/mdev = 0.573/0.686/0.799/0.113 ms
+
+#
+    ping -c 2 monitor-node
+
+#
+    devops@devops-control:~$ ping -c 2 monitor 
+    PING monitor (192.168.122.202) 56(84) bytes of data.
+    64 bytes from monitor (192.168.122.202): icmp_seq=1 ttl=64 time=0.734 ms
+    64 bytes from monitor (192.168.122.202): icmp_seq=2 ttl=64 time=0.547 ms
+
+    --- monitor ping statistics ---
+    2 packets transmitted, 2 received, 0% packet loss, time 1009ms
+    rtt min/avg/max/mdev = 0.547/0.640/0.734/0.093 ms
+
 ssh app-node
 hostname
 exit
