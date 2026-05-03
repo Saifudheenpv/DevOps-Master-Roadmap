@@ -209,113 +209,313 @@ Kernel registers identity
     su - devuser
     whoami
 
+#
+    devops@app-node:~$ su - devuser 
+    Password: 
+    $ whoami
+    devuser
+    $ 
+
 ##
 🧠 You are now:
 
 👉 In user space (restricted)
 
+##
 🧱 STEP 4 — Create Application File
-touch app.log
-echo "App started" > app.log
-cat app.log
+
+    touch app.log
+    echo "App started" > app.log
+    cat app.log
+
+#
+    $ touch app.log
+    $ ls
+    app.log
+    $ echo "App started" > app.log	
+    $ cat app.log
+    App started
+    $ 
+
+##
 🧠 What happens
+
 File written via kernel → disk
+
+##
 🧱 STEP 5 — BREAK PERMISSION (CRITICAL)
-chmod 000 app.log
+
+    chmod 000 app.log
 
 Now try:
 
-cat app.log
+    cat app.log
+
+#
+    $ chmod 000 app.log
+    $ cat app.log
+    cat: app.log: Permission denied
+
+##
 ❌ Expected
 
 Permission denied
 
+##
 🧠 Why
+
 Kernel blocks access
+
 No read permission
+
 🧱 STEP 6 — DEBUG FROM monitor-node
 
 👉 Exit to control:
 
-exit
+    exit
 
 👉 Work on: monitor-node
 
-ssh monitor-node
+    ssh monitor-node
 
 Now try:
 
-ssh app-node
+    ssh app-node
 
+##
 Check file:
 
-ls -l app.log
-cat app.log
+    ls -l /home/devuser/app.log
+    cat /home/devuser/app.log
+
+#
+    devops@app-node:~$ ls -l /home/devuser/
+    total 4
+    ---------- 1 devuser devuser 12 May  3 10:54 app.log
+    devops@app-node:~$ cat /home/devuser/app.log 
+    cat: /home/devuser/app.log: Permission denied
+    devops@app-node:~$ 
+
 ❌ Still fails
+
+##
 🧠 Understanding
+
 Issue is not user-specific
+
 Issue is file permission (kernel-level)
+
+##
 🧱 STEP 7 — FIX ISSUE
 
 👉 Go to app-node as root
 
-sudo chmod 644 app.log
+    sudo chmod 644 /home/devuser/app.log
 
 Now test:
 
-cat app.log
+    cat /home/devuser/app.log
+
+#
+    root@app-node:~# sudo chmod 644 /home/devuser/app.log
+    root@app-node:~# cat /home/devuser/app.log 
+    App started
+    root@app-node:~# 
+
+##
 ✅ Works
+
+##
 🧠 Lesson
+
 Kernel enforces permissions globally
+
 Fixing permission resolves issue for all users
+
+##
 🧱 STEP 8 — PROCESS CREATION (APP SIMULATION)
 
 👉 On app-node:
 
-sleep 500 &
+    sleep 500 &
 
+#
+    devops@app-node:~$ sleep 500 &
+    [1] 1945
+
+##
 Check:
 
-ps aux | grep sleep
+    ps aux | grep sleep
+
+#
+    devops@app-node:~$ ps aux | grep sleep
+    devops      1945  0.0  0.0   5684  2104 pts/1    S    11:07   0:00 sleep 500
+    devops      1949  0.0  0.0   6544  2328 pts/1    S+   11:07   0:00 grep --color=auto sleep
+
+##
 🧠 Understanding
+
 Process created
+
 Kernel managing lifecycle
+
+##
 🧱 STEP 9 — BREAK PROCESS (SIMULATE FAILURE)
-kill <PID>
+
+    kill <PID>
+
+#
+    devops@app-node:~$ kill 1945
+    devops@app-node:~$ ps aux | grep sleep
+    devops      1951  0.0  0.0   6544  2296 pts/1    S+   11:09   0:00 grep --color=auto sleep
+    [1]+  Terminated              sleep 500
+
+##
 🧠 Result
+
 App stopped
+
 Kernel removed process
+
+##
 🧱 STEP 10 — DEBUG FROM CONTROL NODE
 
 👉 Back to devops-control
 
-ssh app-node
-ps aux | grep sleep
+    ssh app-node
+    ps aux | grep sleep
+
+##
 ❌ No process
+
+##
 🧠 Debug Thinking
+
 App is not running
+
 Need to restart
+
+##
 🧱 STEP 11 — SYSTEM CALL OBSERVATION
-strace ls
+
+    strace ls
+
+#
+    devops@app-node:~$ strace ls
+    execve("/usr/bin/ls", ["ls"], 0x7fff96d74d40 /* 22 vars */) = 0
+    brk(NULL)                               = 0x5c209ebf6000
+    mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7149e2d21000
+    access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+    openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+    fstat(3, {st_mode=S_IFREG|0644, st_size=22439, ...}) = 0
+    mmap(NULL, 22439, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7149e2d1b000
+    close(3)                                = 0
+    openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libselinux.so.1", O_RDONLY|O_CLOEXEC) = 3
+    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+    fstat(3, {st_mode=S_IFREG|0644, st_size=174472, ...}) = 0
+    mmap(NULL, 181960, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7149e2cee000
+    mmap(0x7149e2cf4000, 118784, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x6000) = 0x7149e2cf4000
+    mmap(0x7149e2d11000, 24576, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x23000) = 0x7149e2d11000
+    mmap(0x7149e2d17000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x29000) = 0x7149e2d17000
+    mmap(0x7149e2d19000, 5832, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7149e2d19000
+    close(3)                                = 0
+    openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+    read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\220\243\2\0\0\0\0\0"..., 832) = 832
+    pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+    fstat(3, {st_mode=S_IFREG|0755, st_size=2125328, ...}) = 0
+    pread64(3, "\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0"..., 784, 64) = 784
+    mmap(NULL, 2170256, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7149e2a00000
+    mmap(0x7149e2a28000, 1605632, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x28000) = 0x7149e2a28000
+    mmap(0x7149e2bb0000, 323584, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b0000) = 0x7149e2bb0000
+    mmap(0x7149e2bff000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1fe000) = 0x7149e2bff000
+    mmap(0x7149e2c05000, 52624, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7149e2c05000
+    close(3)                                = 0
+    openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libpcre2-8.so.0", O_RDONLY|O_CLOEXEC) = 3
+    read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\0\0\0\0\0\0\0\0"..., 832) = 832
+    fstat(3, {st_mode=S_IFREG|0644, st_size=625344, ...}) = 0
+    mmap(NULL, 627472, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7149e2c54000
+    mmap(0x7149e2c56000, 450560, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x2000) = 0x7149e2c56000
+    mmap(0x7149e2cc4000, 163840, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x70000) = 0x7149e2cc4000
+    mmap(0x7149e2cec000, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x97000) = 0x7149e2cec000
+    close(3)                                = 0
+    mmap(NULL, 12288, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7149e2c51000
+    arch_prctl(ARCH_SET_FS, 0x7149e2c51800) = 0
+    set_tid_address(0x7149e2c51ad0)         = 2031
+    set_robust_list(0x7149e2c51ae0, 24)     = 0
+    rseq(0x7149e2c52120, 0x20, 0, 0x53053053) = 0
+    mprotect(0x7149e2bff000, 16384, PROT_READ) = 0
+    mprotect(0x7149e2cec000, 4096, PROT_READ) = 0
+    mprotect(0x7149e2d17000, 4096, PROT_READ) = 0
+    mprotect(0x5c205fe1b000, 8192, PROT_READ) = 0
+    mprotect(0x7149e2d59000, 8192, PROT_READ) = 0
+    prlimit64(0, RLIMIT_STACK, NULL, {rlim_cur=8192*1024, rlim_max=RLIM64_INFINITY}) = 0
+    munmap(0x7149e2d1b000, 22439)           = 0
+    statfs("/sys/fs/selinux", 0x7fff02cbffb0) = -1 ENOENT (No such file or directory)
+    statfs("/selinux", 0x7fff02cbffb0)      = -1 ENOENT (No such file or directory)
+    getrandom("\x65\xc8\x2a\x99\xe7\x55\x1d\xc1", 8, GRND_NONBLOCK) = 8
+    brk(NULL)                               = 0x5c209ebf6000
+    brk(0x5c209ec17000)                     = 0x5c209ec17000
+    openat(AT_FDCWD, "/proc/filesystems", O_RDONLY|O_CLOEXEC) = 3
+    fstat(3, {st_mode=S_IFREG|0444, st_size=0, ...}) = 0
+    read(3, "nodev\tsysfs\nnodev\ttmpfs\nnodev\tbd"..., 1024) = 400
+    read(3, "", 1024)                       = 0
+    close(3)                                = 0
+    access("/etc/selinux/config", F_OK)     = -1 ENOENT (No such file or directory)
+    openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+    fstat(3, {st_mode=S_IFREG|0644, st_size=3055776, ...}) = 0
+    mmap(NULL, 3055776, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7149e2600000
+    close(3)                                = 0
+    ioctl(1, TCGETS, {c_iflag=ICRNL|IXON|IUTF8, c_oflag=NL0|CR0|TAB0|BS0|VT0|FF0|OPOST|ONLCR, c_cflag=B38400|CS8|CREAD, c_lflag=ISIG|ICANON|ECHO|ECHOE|ECHOK|IEXTEN|ECHOCTL|ECHOKE, ...}) = 0
+    ioctl(1, TIOCGWINSZ, {ws_row=29, ws_col=109, ws_xpixel=0, ws_ypixel=0}) = 0
+    openat(AT_FDCWD, ".", O_RDONLY|O_NONBLOCK|O_CLOEXEC|O_DIRECTORY) = 3
+    fstat(3, {st_mode=S_IFDIR|0750, st_size=4096, ...}) = 0
+    getdents64(3, 0x5c209ebfcce0 /* 9 entries */, 32768) = 288
+    getdents64(3, 0x5c209ebfcce0 /* 0 entries */, 32768) = 0
+    close(3)                                = 0
+    close(1)                                = 0
+    close(2)                                = 0
+    exit_group(0)                           = ?
+    +++ exited with 0 +++
+
+##
 🧠 Understanding
+
 open(), read(), write()
+
 User space → Kernel communication
+
+##
 🔥 FINAL DEBUG SCENARIO (REAL THINKING)
+
 ❗ Problem:
 
 User says:
+
 👉 “App not working”
 
+##
 🧠 Your Debug Flow
-Check process:
-ps aux
-Check file:
-ls -l app.log
-Check user:
-whoami
-Fix:
-chmod 644 app.log
+
+1. Check process:
+
+    ps aux
+
+2. Check file:
+
+    ls -l app.log
+
+3. Check user:
+
+    whoami
+
+4. Fix:
+
+    chmod 644 app.log
 
 or restart:
 
-sleep 500 &
+    sleep 500 &
+
+##
+👉 This is real DevOps debugging mindset
